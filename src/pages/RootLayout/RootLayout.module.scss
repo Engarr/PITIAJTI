@@ -1,0 +1,15 @@
+.header {
+  display: block;
+  position: fixed;
+  z-index: 999;
+  height: 119px;
+  width: 100vw;
+  top: 0;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--nav-border);
+}
+@media only screen and (max-width: 1024px) {
+  .header {
+    height: 100px;
+  }
+}

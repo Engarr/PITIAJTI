@@ -1,0 +1,142 @@
+.navContainer {
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+  }
+  li,
+  a {
+    padding: 5px 10px;
+    transition: color 0.3s;
+  }
+  li:hover,
+  a:hover {
+    color: #25b8fe;
+  }
+  &__options {
+    cursor: pointer;
+    position: relative;
+    &--theme {
+      position: absolute;
+      padding: 10px 20px;
+      right: 0;
+      display: none;
+      opacity: 0;
+      top: 100%;
+      background-color: var(--color);
+      color: var(--background-color);
+      transition: opacity 0.3s;
+    }
+  }
+  &__options:hover &__options--theme {
+    display: block;
+    opacity: 1;
+    animation: showmenu 0.5s forwards;
+  }
+}
+
+.menuItem {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 100%;
+    li {
+      text-align: center;
+      background-color: var(--color);
+      color: var(--background-color);
+      border-radius: 2px;
+      margin-top: 1px;
+      width: 100%;
+      display: none;
+      padding: 10px 20px;
+      opacity: 0;
+      a {
+        color: var(--background-color);
+      }
+    }
+  }
+}
+.menuItem:hover .menuItem__dropdown li {
+  display: inline-block;
+  animation: showmenu 0.5s forwards;
+}
+.menuItem:hover .menuItem__dropdown li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.menuItem:hover .menuItem__dropdown li:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.menuItem:hover .menuItem__dropdown li:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.menuItem:hover .menuItem__dropdown li:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.menuItem:hover .menuItem__dropdown li:nth-child(6) {
+  animation-delay: 1s;
+}
+.menuItem:hover .menuItem__dropdown li:nth-child(7) {
+  animation-delay: 1.2s;
+}
+
+.link {
+  position: relative;
+}
+
+.link,
+.link::after,
+.link::before {
+  transition: 0.3s;
+}
+.link::before,
+.link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.link::before {
+  top: -2px;
+  left: -8px;
+  border-top: 1px solid var(--color);
+  border-left: 1px solid var(--color);
+}
+.link::after {
+  bottom: -2px;
+  right: -8px;
+  border-bottom: 1px solid var(--color);
+  border-right: 1px solid var(--color);
+}
+.link:hover::after,
+.link:hover::before {
+  width: 50px;
+  height: 50%;
+  opacity: 1;
+}
+@media only screen and (max-width: 1024px) {
+  .navContainer {
+    display: none;
+  }
+}
+@keyframes showmenu {
+  from {
+    opacity: 0;
+    transform: rotateY(60deg) translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0) translateX(0);
+  }
+}
