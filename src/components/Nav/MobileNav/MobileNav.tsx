@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import classes from './MobileNav.module.scss';
 
 const MobileNav = () => {
-  const [isMenuActive, setIsMenuActive] = useState(true);
+  const [isMenuActive, setIsMenuActive] = useState(false);
 
   const menuHandler = () => {
     setIsMenuActive((prev) => !prev);

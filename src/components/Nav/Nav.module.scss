@@ -11,26 +11,20 @@
 
   &__logoBox {
     overflow: hidden;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-position: center;
-    background-color: aliceblue;
-    box-shadow: 0 0 2px 1px var(--logo-hover);
     transition: box-shadow 0.15s;
     a {
       height: 100%;
       img {
+        width: 300px;
         height: 100%;
       }
     }
   }
-  &__logoBox:hover {
-    box-shadow: 0 0 2px 2px var(--logo-hover);
-  }
+ 
   &__actionBox {
     position: relative;
     font-size: 1.2em;
@@ -65,9 +59,7 @@
         }
       }
     }
-    &__logoBox:hover {
-      box-shadow: 0 0 2px 2px var(--logo-hover);
-    }
+    
     &__actionBox {
       position: relative;
       font-size: 1.2em;

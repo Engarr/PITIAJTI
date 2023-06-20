@@ -1,0 +1,27 @@
+.card {
+  background-color: var(--background-color);
+  margin: 0.5em;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  &__imgBox {
+    width: 200px;
+    padding: 10px 20px;
+    text-align: center;
+    height: auto;
+    img {
+      width: 80px;
+    }
+  }
+  a {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    transition: color 0.3s;
+  }
+}
+.card:hover a {
+  color: #25b8fe;
+}

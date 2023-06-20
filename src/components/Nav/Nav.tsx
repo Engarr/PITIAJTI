@@ -10,7 +10,7 @@ const Nav = () => {
     <div className={classes.container}>
       <div className={classes.container__logoBox}>
         <Link to="/">
-          <img src={logo} alt="logo" width={120} />
+          <img src={logo} alt="logo" />
         </Link>
       </div>
 
