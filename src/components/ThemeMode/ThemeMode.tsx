@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
+import classes from './ThemeMode.module.scss';
 import { toggleMode, colorMode } from '../../app/slice/colorModeSlice';
 
 const ThemeMode = () => {
@@ -10,7 +11,7 @@ const ThemeMode = () => {
     dispatch(toggleMode());
   };
   return (
-    <div>
+    <div className={classes.container}>
       <p>Motyw:</p>
       <div
         onKeyDown={(event) => {
@@ -21,6 +22,7 @@ const ThemeMode = () => {
         role="button"
         tabIndex={0}
         onClick={toggleModeHandler}
+        className={classes.container__icon}
       >
         {mode === 'dark' ? <MdDarkMode /> : <MdLightMode />}
       </div>

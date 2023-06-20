@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SlOptionsVertical } from 'react-icons/sl';
 import { BsSearch } from 'react-icons/bs';
+import { IoIosArrowDown } from 'react-icons/io';
 import classes from './PCDevicesNav.module.scss';
 import ThemeMode from '../../ThemeMode/ThemeMode';
 import DropdownItem from './dropdownItem/DropdownItem';
@@ -15,97 +16,141 @@ import dl from '../../../assets/dl.png';
 import Modal from '../../Modal/Modal';
 
 const PCDevicesNav = () => {
-  const menuRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const handleMouseEnter = () => {
-      setIsVisible(true);
-    };
-
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-    const currentRef = menuRef.current;
-
-    if (currentRef) {
-      currentRef.addEventListener('mouseenter', handleMouseEnter);
-      currentRef.addEventListener('mouseleave', handleMouseLeave);
-    }
-
-    return () => {
-      if (currentRef) {
-        currentRef.removeEventListener('mouseenter', handleMouseEnter);
-        currentRef.removeEventListener('mouseleave', handleMouseLeave);
-      }
-    };
-  }, [isVisible]);
-
+  const isMenuVisibleHandler = () => {
+    setIsVisible((prev) => !prev);
+  };
+  const hideMenuHandler = () => {
+    setIsVisible(false);
+  };
   return (
     <div className={classes.navContainer}>
       <ul>
-        <li>
-          <BsSearch />
-        </li>
-        <li>
-          <Link to="#aboutUs" className={classes.link}>
-            O nas
-          </Link>
-        </li>
-        <li>
-          <Link to="#contact" className={classes.link}>
-            Kontakt
-          </Link>
-        </li>
-        <div ref={menuRef}>
-          <li className={classes.menuItem}>
-            <Link to="#offert" className={classes.link}>
-              Oferta szkoleń
+        <div
+          onClick={hideMenuHandler}
+          onKeyDown={hideMenuHandler}
+          role="button"
+          tabIndex={0}
+        >
+          <li>
+            <BsSearch />
+          </li>
+        </div>
+        <div
+          onClick={hideMenuHandler}
+          onKeyDown={hideMenuHandler}
+          role="button"
+          tabIndex={0}
+        >
+          <li>
+            <Link to="#aboutUs" className={classes.link} tabIndex={-1}>
+              O nas
             </Link>
           </li>
-          {isVisible && (
-            <div className={classes.menuItem__dropdown}>
-              <DropdownItem
-                message="Robotyka"
-                adress="/robotyka"
-                image={robo}
-              />
-              <DropdownItem
-                message="Sztuczna Inteligencja (AI)"
-                adress="/ai"
-                image={ai}
-              />
-              <DropdownItem
-                message="Uczenie Maszynowe (ML)"
-                adress="/ml"
-                image={ml}
-              />
-              <DropdownItem
-                message="Deep Learning (DL)"
-                adress="/dl"
-                image={dl}
-              />
-              <DropdownItem
-                message="Matematyka"
-                adress="/matematyka"
-                image={math}
-              />
-              <DropdownItem
-                message="Python (Programowanie)"
-                adress="/python"
-                image={phyton}
-              />
-              <DropdownItem message="C (Programowanie)" adress="/c" image={c} />
-            </div>
-          )}
-          <Modal show={isVisible} />
         </div>
-        <li className={classes.link}>
-          <Link to="/login"> Zaloguj się</Link>
+        <div
+          onClick={hideMenuHandler}
+          onKeyDown={hideMenuHandler}
+          role="button"
+          tabIndex={0}
+        >
+          <li>
+            <Link to="#contact" className={classes.link} tabIndex={-1}>
+              Kontakt
+            </Link>
+          </li>
+        </div>
+
+        <li className={classes.menuItem}>
+          <Link
+            to="#offert"
+            className={classes.link}
+            onClick={isMenuVisibleHandler}
+          >
+            Oferta szkoleń
+            <IoIosArrowDown
+              className={`${classes.menuItem__arrow} ${
+                isVisible
+                  ? classes[`menuItem__arrow--down`]
+                  : classes[`menuItem__arrow--up`]
+              }`}
+            />
+          </Link>
         </li>
-        <li className={classes.link}>
-          <Link to="/login"> Zarejestruj się</Link>
-        </li>
+
+        {isVisible && (
+          <ul className={classes.menuItem__dropdown}>
+            <DropdownItem
+              message="Robotyka"
+              adress="/robotyka"
+              image={robo}
+              setIsVisible={setIsVisible}
+            />
+            <DropdownItem
+              message="Sztuczna Inteligencja (AI)"
+              adress="/ai"
+              image={ai}
+              setIsVisible={setIsVisible}
+            />
+            <DropdownItem
+              message="Uczenie Maszynowe (ML)"
+              adress="/ml"
+              image={ml}
+              setIsVisible={setIsVisible}
+            />
+            <DropdownItem
+              message="Deep Learning (DL)"
+              adress="/dl"
+              image={dl}
+              setIsVisible={setIsVisible}
+            />
+            <DropdownItem
+              message="Matematyka"
+              adress="/matematyka"
+              image={math}
+              setIsVisible={setIsVisible}
+            />
+            <DropdownItem
+              message="Python (Programowanie)"
+              adress="/python"
+              image={phyton}
+              setIsVisible={setIsVisible}
+            />
+            <DropdownItem
+              message="C (Programowanie)"
+              adress="/c"
+              image={c}
+              setIsVisible={setIsVisible}
+            />
+          </ul>
+        )}
+        <Modal show={isVisible} handler={isMenuVisibleHandler} />
+        <div
+          onClick={hideMenuHandler}
+          onKeyDown={hideMenuHandler}
+          role="button"
+          tabIndex={0}
+        >
+          <li className={classes.link}>
+            <Link to="/login" tabIndex={-1}>
+              Zaloguj się
+            </Link>
+          </li>
+        </div>
+        <div
+          onClick={hideMenuHandler}
+          onKeyDown={hideMenuHandler}
+          role="button"
+          tabIndex={0}
+        >
+          <li className={classes.link}>
+            <Link to="/zarejestruj" tabIndex={-1}>
+              Zarejestruj się
+            </Link>
+          </li>
+        </div>
+
         <li className={classes.navContainer__options}>
           <SlOptionsVertical />
           <div className={classes[`navContainer__options--theme`]}>
