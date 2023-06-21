@@ -63,11 +63,7 @@ const PCDevicesNav = () => {
         </div>
 
         <li className={classes.menuItem}>
-          <Link
-            to="#offert"
-            className={classes.link}
-            onClick={isMenuVisibleHandler}
-          >
+          <Link to="/" className={classes.link} onClick={isMenuVisibleHandler}>
             Oferta szkoleń
             <IoIosArrowDown
               className={`${classes.menuItem__arrow} ${

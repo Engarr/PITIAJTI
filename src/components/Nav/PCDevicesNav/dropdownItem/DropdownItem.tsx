@@ -16,7 +16,11 @@ const DropdownItem = ({ message, adress, image, setIsVisible }: PropsType) => {
     <div
       className={classes.card}
       onClick={handleClick}
-      onKeyDown={handleClick}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          handleClick();
+        }
+      }}
       role="button"
       tabIndex={0}
     >

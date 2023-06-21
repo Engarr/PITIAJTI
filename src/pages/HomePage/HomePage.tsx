@@ -3,7 +3,7 @@ import classes from './HomePage.module.scss';
 const HomePage = () => {
   return (
     <div className={classes.homeContainer}>
-      {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse id vitae
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse id vitae
       ducimus rem, repudiandae non ad, harum sequi, voluptate quasi tempore
       dolor repellat hic at tempora atque consequuntur in quo.lorem Lorem ipsum
       dolor sit amet consectetur adipisicing elit. Repudiandae, tempore corporis
@@ -110,7 +110,7 @@ const HomePage = () => {
       molestias eum repellendus, totam consectetur enim corporis. Omnis dolorum
       quidem cum recusandae illum eaque eos rerum explicabo, molestiae itaque
       iure unde alias quibusdam optio eius fuga provident illo voluptatum facere
-      numquam tempore. Natus unde sequi voluptatem sed aliquid. */}
+      numquam tempore. Natus unde sequi voluptatem sed aliquid.
     </div>
   );
 };

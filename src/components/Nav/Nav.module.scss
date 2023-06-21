@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     background-position: center;
-    transition: box-shadow 0.15s;
+
     a {
       height: 100%;
       img {
@@ -24,45 +24,45 @@
       }
     }
   }
- 
+
   &__actionBox {
     position: relative;
     font-size: 1.2em;
   }
 }
+.mobileNavContainer {
+  &__burgerBox {
+    display: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: var(--color);
+    div {
+      padding: 10px 10px;
+    }
+  }
+}
+
 
 @media only screen and (max-width: 1024px) {
   .container {
+    display: flex;
     justify-content: space-between;
-    padding: 0 15px;
-    height: 100%;
-    left: 50%;
-    transform: translate(-50%);
+    width: 100%;
 
     &__logoBox {
-      overflow: hidden;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background-position: center;
-      background-color: aliceblue;
-      box-shadow: 0 0 2px 1px var(--logo-hover);
-      transition: box-shadow 0.15s;
       a {
         height: 100%;
         img {
-          width: 100px;
+          width: 200px;
           height: 100%;
         }
       }
     }
-    
-    &__actionBox {
-      position: relative;
-      font-size: 1.2em;
+  }
+  .mobileNavContainer {
+    &__burgerBox {
+      display: flex;
     }
   }
 }
